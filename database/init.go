@@ -17,7 +17,7 @@ func goDotEnvVariable(key string) string {
 	err := godotenv.Load(".env")
 
 	if err != nil {
-		print("FAIL TO LOAD .env FILE")
+		print("FAIL TO LOAD .env FILE !")
 	}
 
 	return os.Getenv(key)
