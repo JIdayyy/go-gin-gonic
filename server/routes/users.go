@@ -12,18 +12,29 @@ import (
 func addUserRoutes(rg *gin.RouterGroup) {
 	users := rg.Group("/users")
 
-	users.GET("/", func(c *gin.Context){
+	users.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, GetUsers())
 	})
 
-	users.POST("/", func(c *gin.Context){
+	users.POST("/", func(c *gin.Context) {
 		body := User{}
 		err := c.ShouldBind(&body)
 
-		if(err != nil) {
+		if err != nil {
 			log.Fatal(err)
 		}
 
 		c.JSON(http.StatusCreated, CreateUser(body))
+	})
+
+	users.DELETE("/:id", func(c *gin.Context) {
+		id, err := c.Params.Get("id")
+
+		if !err {
+			log.Fatal(err)
+		}
+
+		DeleteUser(id)
+
 	})
 }

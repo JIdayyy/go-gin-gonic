@@ -6,12 +6,10 @@ import (
 
 var router = gin.Default()
 
-
-func InitRoutes(){
+func InitRoutes() {
 	v1 := router.Group("/v1")
-	addUserRoutes(v1)
-	addPostRoutes(v1)
 
-	
+	addUserRoutes(v1)
+
 	router.Run(":4010")
 }

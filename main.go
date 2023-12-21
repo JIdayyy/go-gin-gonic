@@ -4,7 +4,6 @@ import (
 	server "local/server"
 )
 
-
 func main() {
-  server.RunServer()
+	server.RunServer()
 }
