@@ -1,7 +1,6 @@
 package database
 
 import (
-	"database/sql"
 	database "local/database"
 	"log"
 )
@@ -14,18 +13,26 @@ type User struct {
 	Created_at  string `json:"created_at"`
 }
 
-func CreateUser(user User) sql.Result {
-	sqlStatement := `
-      INSERT INTO users (id,name)
-      VALUES ($1, $2)`
+func CreateUser(user User) User {
+	var createdUSer User
 
-	value,err := database.PG.Exec(sqlStatement,user.Id,user.Username)
+	sqlStatement := `
+      INSERT INTO users (username,email,password)
+      VALUES ($1, $2, $3) RETURNING username, email, password;`
+
+	
+
+	value,err := database.PG.Prepare(sqlStatement)
 
 	if(err != nil ){
 		log.Fatal(err)
 	}
 
-    return value
+	defer value.Close()
+
+	value.QueryRow(user.Username,user.Email,user.Password).Scan(&createdUSer.Id,&createdUSer.Username, &createdUSer.Email, &createdUSer.Password,&createdUSer.Created_at)
+
+    return user
 }
 
 

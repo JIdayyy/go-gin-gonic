@@ -9,8 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
-
 func addUserRoutes(rg *gin.RouterGroup) {
 	users := rg.Group("/users")
 
@@ -26,6 +24,6 @@ func addUserRoutes(rg *gin.RouterGroup) {
 			log.Fatal(err)
 		}
 
-		CreateUser(body)
+		c.JSON(http.StatusCreated, CreateUser(body))
 	})
 }
