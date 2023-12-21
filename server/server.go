@@ -1,7 +1,7 @@
 package server
 
 import (
-	routes "github.com/JIdayyy/go-gin-gonic/server/routes"
+	routes "local/server/routes"
 )
 
 

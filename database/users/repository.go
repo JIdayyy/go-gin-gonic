@@ -2,22 +2,24 @@ package database
 
 import (
 	"database/sql"
+	database "local/database"
 	"log"
-
-	database "github.com/JIdayyy/go-gin-gonic/database"
 )
 
 type User struct {
 	Id string `json:"id"`
-	Name string `json:"name"`
+	Username string `json:"username"`
+	Email  string `json:"email"`
+	Password string `json:"password"`
+	Created_at  string `json:"created_at"`
 }
 
 func CreateUser(user User) sql.Result {
 	sqlStatement := `
-      INSERT INTO test (id,name)
+      INSERT INTO users (id,name)
       VALUES ($1, $2)`
 
-	value,err := database.PG.Exec(sqlStatement,user.Id,user.Name)
+	value,err := database.PG.Exec(sqlStatement,user.Id,user.Username)
 
 	if(err != nil ){
 		log.Fatal(err)
@@ -28,7 +30,7 @@ func CreateUser(user User) sql.Result {
 
 
 func GetUsers() []User {
-	rows, err := database.PG.Query("SELECT * FROM test;")
+	rows, err := database.PG.Query("SELECT * FROM users;")
 
 		users := make([]User,0)
 
@@ -41,7 +43,7 @@ func GetUsers() []User {
 		for rows.Next() {
 			var user User
 		    
-			err := rows.Scan(&user.Id,&user.Name)
+			err := rows.Scan(&user.Id,&user.Username, &user.Email, &user.Password,&user.Created_at)
 
 			if(err != nil) {
 				log.Fatal(err)
@@ -49,7 +51,10 @@ func GetUsers() []User {
 
 			newUser :=  User{
 				Id: user.Id,
-				Name:user.Name,
+				Username: user.Username,
+				Email: user.Email,
+				Password: user.Password,
+				Created_at: user.Created_at,
 			}
 
 		    users = append(users, newUser)

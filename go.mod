@@ -1,4 +1,4 @@
-module github.com/JIdayyy/go-gin-gonic
+module local
 
 go 1.21.1
 

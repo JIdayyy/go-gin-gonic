@@ -4,7 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	. "github.com/JIdayyy/go-gin-gonic/database/users"
+	. "local/database/users"
+
 	"github.com/gin-gonic/gin"
 )
 
