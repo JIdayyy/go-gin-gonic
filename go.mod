@@ -1,4 +1,4 @@
-module github.com/JIdayyy/go-http
+module github.com/JIdayyy/go-gin-gonic
 
 go 1.21.1
 

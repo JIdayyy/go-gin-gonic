@@ -1,7 +1,7 @@
 package main
 
 import (
-	server "github.com/JIdayyy/go-http/server"
+	server "github.com/JIdayyy/go-gin-gonic/server"
 )
 
 
