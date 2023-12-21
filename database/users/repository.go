@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 
-	database "github.com/JIdayyy/go-http/database"
+	database "github.com/JIdayyy/go-gin-gonic/database"
 )
 
 type User struct {

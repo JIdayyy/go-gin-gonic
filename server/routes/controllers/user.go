@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 
-	usersRepository "github.com/JIdayyy/go-http/database/users"
+	usersRepository "github.com/JIdayyy/go-gin-gonic/database/users"
 	"github.com/gin-gonic/gin"
 )
 
