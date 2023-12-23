@@ -67,7 +67,7 @@ func addUserRoutes(rg *gin.RouterGroup) {
 
 	users.PATCH("/:id", func(c *gin.Context) {
 		id, _ := c.Params.Get("id")
-
+		fmt.Println("PATH USER REQUEST RECIEVED", id)
 		body := UserBodyPatch{}
 
 		err := c.ShouldBind(&body)
