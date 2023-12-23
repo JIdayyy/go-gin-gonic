@@ -1,9 +1,8 @@
 package main
 
-import (
-	server "local/server"
-)
+import "local/server"
 
 func main() {
 	server.RunServer()
+
 }

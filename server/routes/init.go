@@ -11,5 +11,5 @@ func InitRoutes() {
 
 	addUserRoutes(v1)
 
-	router.Run(":4010")
+	router.Run(":4100")
 }
